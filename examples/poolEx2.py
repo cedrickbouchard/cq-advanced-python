@@ -1,6 +1,8 @@
 from multiprocessing import Pool
+import time
 
 def prod(values):
+    time.sleep(1)
     return values[0] * values[1]
 
 if __name__ == '__main__':
@@ -10,5 +12,6 @@ if __name__ == '__main__':
     print(values)
 
     workers = Pool(processes=2)
-    results = workers.map(prod, values)
-    print(results)
+    results = workers.map_async(prod, values)
+    print('Waiting...')
+    print(results.get(timeout=10))
