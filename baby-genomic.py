@@ -24,7 +24,7 @@ def editDistance(seqA, seqB):
                 mat[k    , l + 1] + 1,
                 mat[k + 1, l    ] + 1)
 
-    return 'Edit_Distance(%s, %s) = %s'%(seqA, seqB, mat[-1,-1])
+    return 'Edit_Dist(%s..., %s...) = %s'%(seqA[:24], seqB[:24], mat[-1,-1])
 
 
 def edProxy(twoSeq):
@@ -37,17 +37,16 @@ def printRes(results):
 
 
 def main():
-    sequences = ['attctg,accagt',
-                 'ccat,agcattacg',
-                 'tacagg,cctgac',
-                 'gttcatgga,tccg',
-                 'catgcg,gagtac',
-                 'tcac,tgcatgcgg']
+    N = 500
+    base = ['a','c','g','t']
     distances = []
 
-    for seqs in sequences:
-        twoSeq = seqs.split(',', 1)
-        distances.append(edProxy(twoSeq))
+    np.random.seed(1234)
+
+    for i in xrange(8):
+        seqA = ''.join([base[np.random.randint(0, 4)] for i in xrange(N)])
+        seqB = ''.join([base[np.random.randint(0, 4)] for i in xrange(N)])
+        distances.append(editDistance(seqA, seqB))
 
     # Use edProxy for an easy asynchronous map call
     # Use printRes as a callback function
