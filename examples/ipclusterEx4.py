@@ -6,5 +6,5 @@ def fct(x):
 
 def paraFct():
     client = Client()
-    with client[:].sync_imports():import socket, time
+    with client[:].sync_imports():import time
     return client[:].map_sync(fct, range(8))
