@@ -1,0 +1,15 @@
+#!/bin/bash
+#PBS -l nodes=1:ppn=2
+#PBS -l walltime=00:10:00
+#PBS -j oe
+
+module purge
+module add python
+
+cd $PBS_O_WORKDIR
+
+ipcluster start -n 2 --profile=$PBS_JOBNAME &> $PBS_JOBNAME.log &
+
+sleep $(echo "9 * 60" | bc -l)
+
+kill -s SIGINT $!
