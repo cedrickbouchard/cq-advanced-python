@@ -8,4 +8,4 @@ def fct():
 
 client[:].apply_sync(fct)
 
-quit
+quit()
