@@ -10,7 +10,7 @@ static PyObject* approx_pi_func(PyObject* self, PyObject* args)
     /* if the above function returns -1, an appropriate Python exception will
      * have been set, and the function simply returns NULL */
     answer =approx_pi(value);
-    /*  construct the output from cos, from c double to python float */
+    /*  construct the output from approx_pi, from c double to python float */
     return Py_BuildValue("f", answer);
 }
 
