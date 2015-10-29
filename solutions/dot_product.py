@@ -2,7 +2,7 @@ import sys
 import numpy as np
 from mpi4py import MPI
 
-n = 4800
+n = 8400
 
 comm = MPI.COMM_WORLD
 rank = comm.Get_rank()
